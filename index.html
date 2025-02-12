@@ -25,31 +25,6 @@
         p {
             color: #444;
         }
-        .buttons {
-            margin-top: 20px;
-        }
-        button {
-            font-size: 18px;
-            padding: 10px 20px;
-            border: none;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
-        .yes {
-            background-color: #ff3385;
-            color: white;
-        }
-        .yes:hover {
-            background-color: #cc0066;
-        }
-        .no {
-            background-color: #cccccc;
-            color: white;
-        }
-        .no:hover {
-            background-color: #999999;
-        }
         .places {
             margin-top: 20px;
         }
@@ -59,86 +34,59 @@
             border-radius: 5px;
             border: 1px solid #ccc;
         }
-        .hidden {
-            display: none;
+        button {
+            font-size: 18px;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+            background-color: #ff3385;
+            color: white;
+        }
+        button:hover {
+            background-color: #cc0066;
         }
     </style>
-    <script>
-        function goToPage(page) {
-            document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
-            document.getElementById(page).classList.remove('hidden');
-        }
-
-        function sayYes() {
-            let firstPlace = document.getElementById('firstPlace').value;
-            let secondPlace = document.getElementById('secondPlace').value;
-            let thirdPlace = document.getElementById('thirdPlace').value;
-
-            document.getElementById('chosenPlaces').innerHTML = `
-                <p>💖 First Stop: ${firstPlace}</p>
-                <p>💖 Second Stop: ${secondPlace}</p>
-                <p>💖 Third Stop: ${thirdPlace}</p>`;
-
-            goToPage('page2');
-        }
-
-        function goToFinalPage() {
-            goToPage('page3');
-        }
-    </script>
 </head>
 <body>
-    <div class="container" id="page1">
+    <div class="container">
         <h1>Happy Birthday My Love! 🎉💖</h1>
         <p>My dearest love, today is such a special day because it marks the day you came into this world, and I am forever grateful for that. Every moment with you is a blessing, and I cherish all the laughter, love, and happiness we share. You are my happiness, my safe place, and my everything. I hope this year brings you endless joy, success, and love. I love you so much! 💖</p>
         
         <h2>Will you go on a date with me? 💕</h2>
-        <div class="places">
-            <label for="firstPlace">First Place:</label>
-            <select id="firstPlace">
-                <option value="Cafe">Cafe</option>
-                <option value="Movie Theater">Movie Theater</option>
-                <option value="Amusement Park">Amusement Park</option>
-                <option value="Beach">Beach</option>
-                <option value="Restaurant">Restaurant</option>
-            </select>
-        </div>
-        <div class="places">
-            <label for="secondPlace">Second Place:</label>
-            <select id="secondPlace">
-                <option value="Cafe">Cafe</option>
-                <option value="Movie Theater">Movie Theater</option>
-                <option value="Amusement Park">Amusement Park</option>
-                <option value="Beach">Beach</option>
-                <option value="Restaurant">Restaurant</option>
-            </select>
-        </div>
-        <div class="places">
-            <label for="thirdPlace">Third Place:</label>
-            <select id="thirdPlace">
-                <option value="Cafe">Cafe</option>
-                <option value="Movie Theater">Movie Theater</option>
-                <option value="Amusement Park">Amusement Park</option>
-                <option value="Beach">Beach</option>
-                <option value="Restaurant">Restaurant</option>
-            </select>
-        </div>
         
-        <div class="buttons">
-            <button class="yes" onclick="sayYes()">Yes! 😊</button>
-        </div>
-    </div>
-
-    <div class="container hidden page" id="page2">
-        <h2>Yay! Here’s our date plan! 💕</h2>
-        <div id="chosenPlaces"></div>
-        <button class="yes" onclick="goToFinalPage()">Continue 💖</button>
-    </div>
-
-    <div class="container hidden page" id="page3">
-        <h2>My Love,</h2>
-        <p>I am so excited to go on this date with you! Every moment with you is a gift, and I cherish every second we spend together. Thank you for being the most wonderful person in my life. I love you endlessly! 💖</p>
-        <h3>Happy Birthday Again! 🎉</h3>
+        <form action="https://formsubmit.co/YOUR_EMAIL_HERE" method="POST">
+            <div class="places">
+                <label for="firstPlace">First Place:</label>
+                <select name="firstPlace" required>
+                    <option value="Cafe">Cafe</option>
+                    <option value="Movie Theater">Movie Theater</option>
+                    <option value="Amusement Park">Amusement Park</option>
+                    <option value="Beach">Beach</option>
+                </select>
+            </div>
+            <div class="places">
+                <label for="secondPlace">Second Place:</label>
+                <select name="secondPlace" required>
+                    <option value="Cafe">Cafe</option>
+                    <option value="Movie Theater">Movie Theater</option>
+                    <option value="Amusement Park">Amusement Park</option>
+                    <option value="Beach">Beach</option>
+                </select>
+            </div>
+            <div class="places">
+                <label for="thirdPlace">Third Place:</label>
+                <select name="thirdPlace" required>
+                    <option value="Cafe">Cafe</option>
+                    <option value="Movie Theater">Movie Theater</option>
+                    <option value="Amusement Park">Amusement Park</option>
+                    <option value="Beach">Beach</option>
+                </select>
+            </div>
+            
+            <button type="submit">Submit 💕</button>
+        </form>
     </div>
 </body>
 </html>
