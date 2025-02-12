@@ -61,16 +61,22 @@
         }
     </style>
     <script>
-        function sayYes() {
-            let firstPlace = document.getElementById('firstPlace').value;
-            let secondPlace = document.getElementById('secondPlace').value;
-            let thirdPlace = document.getElementById('thirdPlace').value;
-            document.getElementById('result').innerText = 'Yay! Can\'t wait for our date! First stop: ' + firstPlace + ', then ' + secondPlace + ', and finally ' + thirdPlace + '! ❤️';
-        }
-        function hideNo() {
-            document.getElementById('noButton').style.display = 'none';
-        }
-    </script>
+    function sayYes() {
+        let firstPlace = document.getElementById('firstPlace').value;
+        let secondPlace = document.getElementById('secondPlace').value;
+        let thirdPlace = document.getElementById('thirdPlace').value;
+
+        let outputDiv = document.getElementById('output');
+        outputDiv.innerHTML = `<h3>Yay! Here's our date plan:</h3>
+            <p>💖 First Stop: ${firstPlace}</p>
+            <p>💖 Second Stop: ${secondPlace}</p>
+            <p>💖 Third Stop: ${thirdPlace}</p>`;
+    }
+
+    function hideNo() {
+        document.getElementById('noButton').style.display = 'none';
+    }
+</script>
 </head>
 <body>
     <div class="container">
