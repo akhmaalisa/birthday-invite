@@ -59,27 +59,36 @@
             border-radius: 5px;
             border: 1px solid #ccc;
         }
+        .hidden {
+            display: none;
+        }
     </style>
     <script>
-    function sayYes() {
-        let firstPlace = document.getElementById('firstPlace').value;
-        let secondPlace = document.getElementById('secondPlace').value;
-        let thirdPlace = document.getElementById('thirdPlace').value;
+        function goToPage(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.add('hidden'));
+            document.getElementById(page).classList.remove('hidden');
+        }
 
-        let outputDiv = document.getElementById('output');
-        outputDiv.innerHTML = `<h3>Yay! Here's our date plan:</h3>
-            <p>💖 First Stop: ${firstPlace}</p>
-            <p>💖 Second Stop: ${secondPlace}</p>
-            <p>💖 Third Stop: ${thirdPlace}</p>`;
-    }
+        function sayYes() {
+            let firstPlace = document.getElementById('firstPlace').value;
+            let secondPlace = document.getElementById('secondPlace').value;
+            let thirdPlace = document.getElementById('thirdPlace').value;
 
-    function hideNo() {
-        document.getElementById('noButton').style.display = 'none';
-    }
-</script>
+            document.getElementById('chosenPlaces').innerHTML = `
+                <p>💖 First Stop: ${firstPlace}</p>
+                <p>💖 Second Stop: ${secondPlace}</p>
+                <p>💖 Third Stop: ${thirdPlace}</p>`;
+
+            goToPage('page2');
+        }
+
+        function goToFinalPage() {
+            goToPage('page3');
+        }
+    </script>
 </head>
 <body>
-    <div class="container">
+    <div class="container" id="page1">
         <h1>Happy Birthday My Love! 🎉💖</h1>
         <p>My dearest love, today is such a special day because it marks the day you came into this world, and I am forever grateful for that. Every moment with you is a blessing, and I cherish all the laughter, love, and happiness we share. You are my happiness, my safe place, and my everything. I hope this year brings you endless joy, success, and love. I love you so much! 💖</p>
         
@@ -117,9 +126,19 @@
         
         <div class="buttons">
             <button class="yes" onclick="sayYes()">Yes! 😊</button>
-            <button class="no" id="noButton" onmouseover="hideNo()">No 😢</button>
         </div>
-        <p id="result" style="margin-top: 20px; font-weight: bold; color: #ff3385;"></p>
+    </div>
+
+    <div class="container hidden page" id="page2">
+        <h2>Yay! Here’s our date plan! 💕</h2>
+        <div id="chosenPlaces"></div>
+        <button class="yes" onclick="goToFinalPage()">Continue 💖</button>
+    </div>
+
+    <div class="container hidden page" id="page3">
+        <h2>My Love,</h2>
+        <p>I am so excited to go on this date with you! Every moment with you is a gift, and I cherish every second we spend together. Thank you for being the most wonderful person in my life. I love you endlessly! 💖</p>
+        <h3>Happy Birthday Again! 🎉</h3>
     </div>
 </body>
 </html>
