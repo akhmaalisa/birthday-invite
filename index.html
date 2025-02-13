@@ -16,8 +16,12 @@
             padding: 20px;
             border-radius: 20px;
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-            display: inline-block;
+            display: none;
             max-width: 600px;
+            margin: auto;
+        }
+        .active {
+            display: block;
         }
         h1, h2 {
             color: #ff3385;
@@ -50,16 +54,10 @@
         .no:hover {
             background-color: #999999;
         }
-        .page {
-            display: none;
-        }
-        .active {
-            display: block;
-        }
     </style>
 </head>
 <body>
-    <div class="container page active" id="pageOne">
+    <div class="container active" id="pageOne">
         <h1>Happy Birthday My Love! 🎉💖</h1>
         <p>My dearest love, today is such a special day because it marks the day you came into this world, and I am forever grateful for that. Every moment with you is a blessing, and I cherish all the laughter, love, and happiness we share. You are my happiness, my safe place, and my everything. I hope this year brings you endless joy, success, and love. I love you so much! 💖</p>
         
@@ -70,7 +68,7 @@
         </div>
     </div>
     
-    <div class="container page" id="pageTwo">
+    <div class="container" id="pageTwo">
         <h2>Select the places for our date! 💕</h2>
         <label for="firstPlace">First Place:</label>
         <select id="firstPlace">
@@ -102,7 +100,7 @@
         <button class="yes" onclick="showPage('pageThree')">Next ➡️</button>
     </div>
     
-    <div class="container page" id="pageThree">
+    <div class="container" id="pageThree">
         <h2>Confirm and Submit 💌</h2>
         <form action="https://formspree.io/f/myzkdnrp" method="POST">
             <input type="hidden" name="firstPlace" id="inputFirstPlace">
@@ -114,7 +112,7 @@
     
     <script>
         function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.querySelectorAll('.container').forEach(page => page.classList.remove('active'));
             document.getElementById(pageId).classList.add('active');
         }
         
