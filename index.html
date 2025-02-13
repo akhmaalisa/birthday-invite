@@ -19,20 +19,14 @@
             display: inline-block;
             max-width: 600px;
         }
-        h1 {
+        h1, h2 {
             color: #ff3385;
         }
         p {
             color: #444;
         }
-        .places {
+        .buttons {
             margin-top: 20px;
-        }
-        select {
-            font-size: 16px;
-            padding: 8px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
         }
         button {
             font-size: 18px;
@@ -41,55 +35,98 @@
             border-radius: 10px;
             cursor: pointer;
             transition: 0.3s;
+        }
+        .yes {
             background-color: #ff3385;
             color: white;
         }
-        button:hover {
+        .yes:hover {
             background-color: #cc0066;
+        }
+        .no {
+            background-color: #cccccc;
+            color: white;
+        }
+        .no:hover {
+            background-color: #999999;
+        }
+        .page {
+            display: none;
+        }
+        .active {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container page active" id="pageOne">
         <h1>Happy Birthday My Love! 🎉💖</h1>
         <p>My dearest love, today is such a special day because it marks the day you came into this world, and I am forever grateful for that. Every moment with you is a blessing, and I cherish all the laughter, love, and happiness we share. You are my happiness, my safe place, and my everything. I hope this year brings you endless joy, success, and love. I love you so much! 💖</p>
         
         <h2>Will you go on a date with me? 💕</h2>
-        
+        <div class="buttons">
+            <button class="yes" onclick="showPage('pageTwo')">Yes! 😊</button>
+            <button class="no" id="noButton" onmouseover="hideNo()">No 😢</button>
+        </div>
+    </div>
+    
+    <div class="container page" id="pageTwo">
+        <h2>Select the places for our date! 💕</h2>
+        <label for="firstPlace">First Place:</label>
+        <select id="firstPlace">
+            <option value="Cafe">Cafe</option>
+            <option value="Movie Theater">Movie Theater</option>
+            <option value="Amusement Park">Amusement Park</option>
+            <option value="Beach">Beach</option>
+            <option value="Restaurant">Restaurant</option>
+        </select>
+        <br><br>
+        <label for="secondPlace">Second Place:</label>
+        <select id="secondPlace">
+            <option value="Cafe">Cafe</option>
+            <option value="Movie Theater">Movie Theater</option>
+            <option value="Amusement Park">Amusement Park</option>
+            <option value="Beach">Beach</option>
+            <option value="Restaurant">Restaurant</option>
+        </select>
+        <br><br>
+        <label for="thirdPlace">Third Place:</label>
+        <select id="thirdPlace">
+            <option value="Cafe">Cafe</option>
+            <option value="Movie Theater">Movie Theater</option>
+            <option value="Amusement Park">Amusement Park</option>
+            <option value="Beach">Beach</option>
+            <option value="Restaurant">Restaurant</option>
+        </select>
+        <br><br>
+        <button class="yes" onclick="showPage('pageThree')">Next ➡️</button>
+    </div>
+    
+    <div class="container page" id="pageThree">
+        <h2>Confirm and Submit 💌</h2>
         <form action="https://formspree.io/f/myzkdnrp" method="POST">
-            <div class="places">
-                <label for="firstPlace">First Place:</label>
-                <select name="firstPlace" required>
-                    <option value="Cafe">Cafe</option>
-                    <option value="Movie Theater">Movie Theater</option>
-                    <option value="Amusement Park">Amusement Park</option>
-                    <option value="Beach">Beach</option>
-                    <option value="Restaurant">Restaurant</option>
-                </select>
-            </div>
-            <div class="places">
-                <label for="secondPlace">Second Place:</label>
-                <select name="secondPlace" required>
-                    <option value="Cafe">Cafe</option>
-                    <option value="Movie Theater">Movie Theater</option>
-                    <option value="Amusement Park">Amusement Park</option>
-                    <option value="Beach">Beach</option>
-                    <option value="Restaurant">Restaurant</option>
-                </select>
-            </div>
-            <div class="places">
-                <label for="thirdPlace">Third Place:</label>
-                <select name="thirdPlace" required>
-                    <option value="Cafe">Cafe</option>
-                    <option value="Movie Theater">Movie Theater</option>
-                    <option value="Amusement Park">Amusement Park</option>
-                    <option value="Beach">Beach</option>
-                    <option value="Restaurant">Restaurant</option>
-                </select>
-            </div>
-            
-            <button type="submit">Submit 💕</button>
+            <input type="hidden" name="firstPlace" id="inputFirstPlace">
+            <input type="hidden" name="secondPlace" id="inputSecondPlace">
+            <input type="hidden" name="thirdPlace" id="inputThirdPlace">
+            <button type="submit" class="yes" onclick="fillHiddenFields()">Submit 💕</button>
         </form>
     </div>
+    
+    <script>
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+        
+        function hideNo() {
+            document.getElementById('noButton').style.display = 'none';
+        }
+        
+        function fillHiddenFields() {
+            document.getElementById('inputFirstPlace').value = document.getElementById('firstPlace').value;
+            document.getElementById('inputSecondPlace').value = document.getElementById('secondPlace').value;
+            document.getElementById('inputThirdPlace').value = document.getElementById('thirdPlace').value;
+        }
+    </script>
 </body>
 </html>
